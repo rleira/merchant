@@ -1,0 +1,10 @@
+<mongoChangeLog>
+    <changeSet changeId="ChangeSet-1" author="rleira">
+        <script>
+            db.merchant.insert({"_id" : "id1", "name" : "merchant 1"});
+            db.merchant.insert({"_id" : "id2", "name" : "merchant 2"});
+            db.merchant.insert({"_id" : "id3", "name" : "merchant 3"});
+            db.merchant.insert({"_id" : "id4", "name" : "merchant 4"});
+        </script>
+    </changeSet>
+</mongoChangeLog>
