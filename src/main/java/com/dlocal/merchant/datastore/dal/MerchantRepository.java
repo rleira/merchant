@@ -1,8 +1,9 @@
 package com.dlocal.merchant.datastore.dal;
 
 import com.dlocal.merchant.datastore.models.Merchant;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MerchantRepository extends MongoRepository<Merchant, String> {
-    public Merchant findByName(String firstName);
+@Repository
+public interface MerchantRepository extends PagingAndSortingRepository<Merchant, String> {
 }
