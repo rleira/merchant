@@ -1,7 +1,9 @@
 package com.dlocal.merchant.datastore;
 
 import com.mongodb.MongoClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
@@ -9,18 +11,16 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @EnableMongoRepositories
 class RepositoryConfig extends AbstractMongoConfiguration {
 
+    @Autowired
+    private Environment env;
+
     @Override
     protected String getDatabaseName() {
-        return "merchantDB";
+        return env.getProperty("mongo.name");
     }
 
     @Override
     public MongoClient mongoClient() {
-        return new MongoClient("localhost", 27017);
-    }
-
-    @Override
-    protected String getMappingBasePackage() {
-        return "com.dlocal.merchant.datastore";
+        return new MongoClient(env.getProperty("mongo.url"), Integer.parseInt(env.getProperty("mongo.port")));
     }
 }
