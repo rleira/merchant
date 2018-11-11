@@ -26,7 +26,7 @@ public class MerchantResource {
     @GET
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getEmployee(@PathParam("id") String id) {
+    public Response getMerchant(@PathParam("id") String id) {
         Optional<Merchant> merchantOpt = repository.findById(id);
         if (merchantOpt.isPresent()) {
             com.dlocal.merchant.web.model.Merchant merchantFEModel = new com.dlocal.merchant.web.model.Merchant();
